@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    加密邮件首页
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="myblock" style="text-align: center;">
+            <br><br>
+            <img src="../static/img/logo.png" alt="Logo" id="logo">
+            <br><br><br><br>
+            <h1>欢迎使用哈工大<small>（威海）</small>加密电子邮件系统！</h1>
+            <br><br>
+            {% if user.is_authenticated %}
+            <h1>点击<a href="#">这里</a>进入用户主页</h1>
+            {% else %}
+            <h3>点击<a href="/login">这里</a>登录</h3>
+            <p><small>没有帐号？点击<a href="/register">这里</a>注册</small></p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

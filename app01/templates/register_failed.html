@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    登录
+{% endblock %}
+    
+{% block content %}
+<br><br><br><br><br><br><br><br><br>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="myblock">
+                    <h2 class="text-center">信息填写有误!</h2>
+                    <p class="text-center"><span id="countdown">3</span>秒后跳转回注册页面...</p>
+                </div>
+            </div>           
+            <div class="col-md-4"></div>
+        </div>
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+  var countdownElement = document.getElementById("countdown");
+  var seconds = 3; // 设置倒计时秒数
+  
+  var countdownInterval = setInterval(function() {
+    seconds--; // 每隔一秒减少一秒
+    
+    if (seconds > 0) {
+      countdownElement.textContent = seconds;
+    } else {
+      clearInterval(countdownInterval); // 清除计时器
+      window.location.href = "/register/"; // 跳转到登录页面
+    }
+  }, 1000);
+});
+
+</script>
+
+{% endblock %}

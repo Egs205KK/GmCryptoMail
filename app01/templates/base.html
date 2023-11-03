@@ -1,0 +1,119 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- 其他头部信息 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        .navbar-container {
+            padding: 0;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-style: solid;
+            border-width: 1px 0;
+            border-color: #ccc;
+            width: 100%;
+            background-color: #fafafa;
+            border-radius: 10px;
+        }
+
+        .navbar-nav.ml-auto .nav-item {
+        margin-left: 10px;
+        }
+        .custom-btn {
+            border: 2px solid #007bff;
+            background-color: transparent;
+            color: #007bff;
+        }
+
+        .custom-btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .myblock {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .navbar-brand img {
+            width: 120px;
+            height: 30px;
+        }
+
+        #logo {
+            width: 600px;
+            height: 150px;
+        }
+
+        .error-msg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar-container">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container">
+                            <a class="navbar-brand" href="/"><img src="../static/img/logo.png" alt="Logo"></a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/">主页</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">用户中心</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">帮助</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/about">关于我们</a>
+                                    </li>
+                                </ul>
+                                <div class="ms-auto">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <form action="/login" method="get">
+                                                <button class="btn custom-btn" type="submit">Login</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <form action="/register" method="get">
+                                                <button class="btn custom-btn" type="submit">Register</button>
+                                            </form>
+                                        </div>                                  
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </div>
+    
+
+</body>
+</html>
+

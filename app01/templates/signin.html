@@ -1,0 +1,226 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>加密邮件首页</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        .navbar-container {
+            padding: 0;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-style: solid;
+            border-width: 1px 0;
+            border-color: #ccc;
+            width: 100%;
+            background-color: #fafafa;
+            border-radius: 10px;
+        }
+
+        .navbar-nav.ml-auto .nav-item {
+        margin-left: 10px;
+        }
+        .custom-btn {
+            border: 2px solid #007bff;
+            background-color: transparent;
+            color: #007bff;
+        }
+
+        .custom-btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .myblock {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .navbar-brand img {
+            width: 120px;
+            height: 30px;
+        }
+
+        #logo {
+            width: 600px;
+            height: 150px;
+        }
+
+        .error-msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body> 
+    <!--整个页面在这个div里面-->  
+    <div class="container-fluid">
+
+        <!--导航条-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar-container">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container">
+                            <a class="navbar-brand" href="/index"><img src="../static/img/logo.png" alt="Logo"></a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">主页</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">用户中心</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">帮助</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">关于我们</a>
+                                    </li>
+                                </ul>
+                                <div class="ms-auto">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <form action="/login" method="get">
+                                                <button class="btn custom-btn" type="submit">Login</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <form action="/signin" method="get">
+                                                <button class="btn custom-btn" type="submit">Register</button>
+                                            </form>
+                                        </div>                                  
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="myblock">
+                    <h2 class="text-center">用户注册</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username">用户名</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="4-16个字符，只包含字母和数字" required pattern="[a-zA-Z0-9]{4,16}">
+                                    <small id="username-error-msg" class="error-msg"></small>
+                                </div>  
+                            </div>             
+                            <div class="col-md-3"></div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="8-32个字符，至少包含字母和数字" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,32}">
+                                    <small id="password-error-msg" class="error-msg"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">电子邮箱</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱" required>
+                                    <small id="email-error-msg" class="error-msg"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                
+                        <br>
+                
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <input type="submit" value="立即注册" class="btn btn-primary">
+                            </div>
+                            <div class="col-md-4"><p>点击<a href="/login">这里</a>去登录</p></div>
+                        </div>
+                
+                    </form>
+                </div>
+                
+                
+                
+                
+            </div>           
+        <div class="col-md-4"></div>
+    </div>
+
+        
+
+    <script>
+        // 获取用户名输入框
+        const usernameInput = document.getElementById('username');
+        // 获取密码输入框
+        const passwordInput = document.getElementById('password');
+        // 获取邮箱输入框
+        const emailInput = document.getElementById('email');
+    
+        // 监听用户名输入框的输入事件
+        usernameInput.addEventListener('input', function() {
+            const usernameErrorMsg = document.getElementById('username-error-msg');
+            if (usernameInput.validity.valid) {
+                usernameErrorMsg.textContent = '';
+                usernameErrorMsg.classList.remove('error');
+            } else {
+                usernameErrorMsg.textContent = '用户名格式不正确，请检查。';
+                usernameErrorMsg.classList.add('error');
+            }
+        });
+    
+        // 监听密码输入框的输入事件
+        passwordInput.addEventListener('input', function() {
+            const passwordErrorMsg = document.getElementById('password-error-msg');
+            if (passwordInput.validity.valid) {
+                passwordErrorMsg.textContent = '';
+                passwordErrorMsg.classList.remove('error');
+            } else {
+                passwordErrorMsg.textContent = '密码格式不正确，请检查。';
+                passwordErrorMsg.classList.add('error');
+            }
+        });
+    
+        // 监听邮箱输入框的输入事件
+        emailInput.addEventListener('input', function() {
+            const emailErrorMsg = document.getElementById('email-error-msg');
+            if (emailInput.validity.valid) {
+                emailErrorMsg.textContent = '';
+                emailErrorMsg.classList.remove('error');
+            } else {
+                emailErrorMsg.textContent = '邮箱格式不正确，请检查。';
+                emailErrorMsg.classList.add('error');
+            }
+        });
+    </script>
+    
+</body>
+</html>

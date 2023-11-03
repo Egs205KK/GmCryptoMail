@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    登录
+{% endblock %}
+    
+{% block content %}
+<br><br><br><br><br><br><br><br><br>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="myblock">
+                    <h2 class="text-center">用户登录</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username">用户名</label>
+                                    <input type="text" class="form-control" name="username" placeholder="请输入用户名">
+                                </div>  
+                            </div>             
+                            <div class="col-md-3"></div>
+                        </div>
+
+                            
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" name="password" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+
+        
+                        <br>
+
+                        <div class="row">
+                            <p class="text-center" style="color: red;">{{error_msg}}</p>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <input type="submit" value="登录" class="btn btn-primary">
+                            </div>
+                            <div class="col-md-4"><p>点击<a href="/register">这里</a>去注册</p></div>
+                        </div>
+        
+                        
+
+                    </form>
+                                        
+                </div>
+            </div>           
+        <div class="col-md-4"></div>
+
+{% endblock %}

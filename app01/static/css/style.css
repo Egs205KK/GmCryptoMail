@@ -1,0 +1,42 @@
+
+
+
+body {
+    background-image: url('../img/bg.png')!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.navbar-container {
+    padding: 0;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: #ccc;
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 10px;
+}
+
+.navbar-nav.ml-auto .nav-item {
+  margin-left: 10px;
+}
+.custom-btn {
+    border: 2px solid #007bff;
+    background-color: transparent;
+    color: #007bff;
+}
+
+.custom-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+}

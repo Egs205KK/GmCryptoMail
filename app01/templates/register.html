@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    注册
+{% endblock %}
+    
+{% block content %}
+<br><br><br><br><br><br><br><br><br>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="myblock">
+            <h2 class="text-center">用户注册</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+        
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username">用户名</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="4-16个字符，只包含字母和数字" required pattern="[a-zA-Z0-9]{4,16}">
+                            <small id="username-error-msg" class="error-msg"></small>
+                        </div>  
+                    </div>             
+                    <div class="col-md-3"></div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="password">密码</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="8-32个字符，至少包含字母和数字" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,32}">
+                            <small id="password-error-msg" class="error-msg"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">电子邮箱</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱" required pattern="^[\w\.-]+@[\w\.-]+\.\w+$">
+                            <small id="email-error-msg" class="error-msg"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+        
+                <br>
+        
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <input type="submit" value="立即注册" class="btn btn-primary">
+                    </div>
+                    <div class="col-md-4"><p>点击<a href="/login">这里</a>去登录</p></div>
+                </div>
+        
+            </form>
+        </div> 
+        
+    </div>           
+<div class="col-md-4"></div>
+
+<script>
+    // 获取用户名输入框
+    const usernameInput = document.getElementById('username');
+    // 获取密码输入框
+    const passwordInput = document.getElementById('password');
+    // 获取邮箱输入框
+    const emailInput = document.getElementById('email');
+
+    // 监听用户名输入框的输入事件
+    usernameInput.addEventListener('input', function() {
+        const usernameErrorMsg = document.getElementById('username-error-msg');
+        if (usernameInput.validity.valid) {
+            usernameErrorMsg.textContent = '';
+            usernameErrorMsg.classList.remove('error');
+        } else {
+            usernameErrorMsg.textContent = '用户名格式不正确，请检查。';
+            usernameErrorMsg.classList.add('error');
+        }
+    });
+
+    // 监听密码输入框的输入事件
+    passwordInput.addEventListener('input', function() {
+        const passwordErrorMsg = document.getElementById('password-error-msg');
+        if (passwordInput.validity.valid) {
+            passwordErrorMsg.textContent = '';
+            passwordErrorMsg.classList.remove('error');
+        } else {
+            passwordErrorMsg.textContent = '密码格式不正确，请检查。';
+            passwordErrorMsg.classList.add('error');
+        }
+    });
+
+    // 监听邮箱输入框的输入事件
+    emailInput.addEventListener('input', function() {
+        const emailErrorMsg = document.getElementById('email-error-msg');
+        if (emailInput.validity.valid) {
+            emailErrorMsg.textContent = '';
+            emailErrorMsg.classList.remove('error');
+        } else {
+            emailErrorMsg.textContent = '邮箱格式不正确，请检查。';
+            emailErrorMsg.classList.add('error');
+        }
+    });
+</script>
+{% endblock %}
