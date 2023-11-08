@@ -82,4 +82,9 @@ def user_login(request):
 def about(request):
     if request.method == 'GET':
         return render(request, 'about.html')
-   
+
+
+
+
+def user_index(request):
+    return render(request, 'user_index.html')
